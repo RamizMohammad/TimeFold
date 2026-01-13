@@ -1,7 +1,7 @@
-import { OnThisDayResponse, CategorizedEvent } from '../types';
+import { CategorizedEvent, OnThisDayResponse } from '../types';
 import { categorizeEvent, generateEventId } from './categorization';
 
-const API_BASE = 'https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday';
+const API_BASE = '/api/onthisday';
 
 export async function fetchOnThisDay(month: string, day: string): Promise<OnThisDayResponse> {
   const url = `${API_BASE}/all/${month}/${day}`;
