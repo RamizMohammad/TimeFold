@@ -3,14 +3,13 @@ import { categorizeEvent, generateEventId } from './categorization';
 
 const API_BASE = '/api/onthisday';
 
-export async function fetchOnThisDay(month: string, day: string): Promise<OnThisDayResponse> {
-  const url = `${API_BASE}/all/${month}/${day}`;
+export async function fetchOnThisDay(
+  month: string,
+  day: string
+): Promise<OnThisDayResponse> {
+  const url = `${API_BASE}?month=${month}&day=${day}`;
 
-  const response = await fetch(url, {
-    headers: {
-      'Api-User-Agent': 'TodaysEra/1.0 (Educational Project)'
-    }
-  });
+  const response = await fetch(url);
 
   if (!response.ok) {
     throw new Error(`Failed to fetch data: ${response.statusText}`);
